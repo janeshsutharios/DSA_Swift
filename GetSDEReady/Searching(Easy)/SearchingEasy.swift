@@ -219,3 +219,26 @@ class Solution {
 // * `mid = 1` → `nums[1] = 2 < nums[2] = 3` → move right (`left = 2`).
 // * `mid = 2` → `nums[2] = 3 > nums[3] = 1` → move left (`right = 2`).
 // * `left == right == 2` → **peak = index 2** (value `3`).
+
+// https://getsdeready.com/courses/dsa/lesson/single-element-in-a-sorted-array/
+//  https://leetcode.com/problems/single-element-in-a-sorted-array/description/
+class Solution {
+    func singleNonDuplicate(_ nums: [Int]) -> Int {
+        if nums.isEmpty { return -1 }
+        var left = 0
+        var right = nums.count - 1
+        
+        while left < right {
+            var mid = (left + right)/2
+            // Read question every element appears exactly twice, except for one element which appears exactly once.
+            if (mid % 2 == 0 && nums[mid] == nums[mid + 1]) || (mid % 2 == 1 && nums[mid] == nums[mid - 1]) {
+                // If mid is even & so dup will be next number
+                // If mid is Odd & so dup will be prev number
+                left = mid + 1
+            } else {
+                right = mid
+            }
+        }
+        return nums[left] 
+    }
+}
