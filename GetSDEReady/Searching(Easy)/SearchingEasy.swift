@@ -183,3 +183,39 @@ class Solution {
         return low
     }
 }
+
+// https://getsdeready.com/courses/dsa/lesson/find-peak-element/?course=573
+// https://leetcode.com/problems/find-peak-element/
+class Solution {
+    func findPeakElement(_ nums: [Int]) -> Int {
+        // If the array is empty, return 0 (though per problem constraints, nums will always have at least 1 element)
+        if nums.isEmpty { return 0 }
+        
+        // Define search boundaries
+        var left = 0
+        var right = nums.count - 1
+        
+        // Binary search until the boundaries meet
+        while left < right {
+            // Find the middle index
+            let mid = (left + right) / 2
+            
+            // If the middle element is smaller than the next element,
+            // it means the peak is in the right half
+            if nums[mid] < nums[mid + 1] {
+                left = mid + 1
+            } else {
+                // Else, the peak is in the left half (including mid)
+                right = mid
+            }
+        }
+        
+        // When left == right, we've found a peak index
+        return left
+    }
+}
+// Dry run for `nums = [1,2,3,1]`:
+
+// * `mid = 1` → `nums[1] = 2 < nums[2] = 3` → move right (`left = 2`).
+// * `mid = 2` → `nums[2] = 3 > nums[3] = 1` → move left (`right = 2`).
+// * `left == right == 2` → **peak = index 2** (value `3`).
