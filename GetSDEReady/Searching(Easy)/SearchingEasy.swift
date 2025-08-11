@@ -242,3 +242,57 @@ class Solution {
         return nums[left] 
     }
 }
+
+// https://getsdeready.com/courses/dsa/lesson/matrix-median/?course=573
+// https://www.interviewbit.com/problems/matrix-median/
+class Solution {
+    func findMedian(_ A: [[Int]]) -> Int {
+        let N = A.count
+        let M = A[0].count
+        let desired = (N * M + 1) / 2
+        
+        // Step 1: Find global minimum and maximum
+        var minVal = Int.max
+        var maxVal = Int.min
+        for row in A {
+            minVal = min(minVal, row.first!)
+            maxVal = max(maxVal, row.last!)
+        }
+        
+        // Helper: Count how many numbers <= target in sorted array via binary search
+        func countLessEqual(_ row: [Int], _ target: Int) -> Int {
+            var low = 0, high = row.count
+            while low < high {
+                let mid = (low + high) / 2
+                if row[mid] <= target {
+                    low = mid + 1
+                } else {
+                    high = mid
+                }
+            }
+            return low
+        }
+        
+        // Step 2: Binary search over value range
+        var low = minVal, high = maxVal
+        while low < high {
+            let mid = low + (high - low) / 2
+            var count = 0
+            
+            // Count <= mid across all rows
+            for row in A {
+                count += countLessEqual(row, mid)
+            }
+            
+            // Move bounds based on count
+            if count < desired {
+                low = mid + 1
+            } else {
+                high = mid
+            }
+        }
+        
+        return low
+    }
+}
+
