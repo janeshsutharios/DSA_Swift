@@ -24,7 +24,7 @@ struct Graph {
     }
 }
 ````
-<img width="512" height="440" alt="image" src="https://github.com/user-attachments/assets/e61c1520-ed92-4450-81a0-a2db31301597" />
+<img width="513" height="420" alt="image" src="https://github.com/user-attachments/assets/6ab934c0-4bce-42a4-875d-442e9d3ec488" />
 
 ```swift
 var graph = Graph(vertices: 4)
