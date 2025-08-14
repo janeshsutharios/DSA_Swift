@@ -23,6 +23,8 @@ struct Graph {
         }
     }
 }
+<img width="512" height="440" alt="image" src="https://github.com/user-attachments/assets/e61c1520-ed92-4450-81a0-a2db31301597" />
+
 var graph = Graph(vertices: 4)
 graph.addEdge(0, 1)
 graph.addEdge(0, 2)
@@ -67,25 +69,5 @@ dGraph.display()
 // 1: [2]
 // 2: []
 ````
-**Undirected Graph (from example)**
-```mermaid
-graph TD;
-    0---1;
-    0---4;
-    1---2;
-    1---3;
-    1---4;
-    2---3;
-    3---4;
-```
-**Directed Graph (same edges but with direction)**
-```mermaid
-graph TD;
-    0-->1;
-    0-->4;
-    1-->2;
-    1-->3;
-    1-->4;
-    2-->3;
-    3-->4;
-```
+<img width="531" height="402" alt="image" src="https://github.com/user-attachments/assets/36c770c5-4477-4588-ba8f-5ece3fde1f89" />
+
