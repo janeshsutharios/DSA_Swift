@@ -1,6 +1,7 @@
-// Graph Representation 
-// Adjacency List Representation
-// MARK: Undirected Graph
+## Graph Representation  
+ Adjacency List Representation  
+ MARK: Undirected Graph
+
 ```swift
 struct Graph {
     let n: Int
