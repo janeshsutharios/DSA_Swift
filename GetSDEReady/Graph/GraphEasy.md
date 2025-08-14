@@ -23,8 +23,10 @@ struct Graph {
         }
     }
 }
+````
 <img width="512" height="440" alt="image" src="https://github.com/user-attachments/assets/e61c1520-ed92-4450-81a0-a2db31301597" />
 
+```swift
 var graph = Graph(vertices: 4)
 graph.addEdge(0, 1)
 graph.addEdge(0, 2)
