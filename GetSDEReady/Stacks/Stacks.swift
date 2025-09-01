@@ -310,5 +310,50 @@ class Solution {
     }
 }
 
+// https://getsdeready.com/courses/dsa/lesson/nearest-smaller-element/
+// https://www.interviewbit.com/problems/matrix-search/
+import Foundation
 
+class Solution {
+    func searchMatrix(_ A: inout [[Int]], _ B: inout Int) -> Int {
+        // Total number of rows
+        let rows = A.count
+        guard rows > 0 else { return 0 } // If matrix is empty, return 0
+        
+        // Total number of columns
+        let cols = A[0].count
+        guard cols > 0 else { return 0 } // If there are no columns, return 0
+        
+        // Treat the matrix as a flattened sorted array
+        var left = 0
+        var right = rows * cols - 1
+        
+        // Perform binary search
+        while left <= right {
+            // Middle index in the "flattened" array
+            let mid = left + (right - left) / 2
+            
+            // Map the flattened index to 2D indices
+            let row = mid / cols
+            let col = mid % cols
+            
+            // Get the element at the mapped position
+            let value = A[row][col]
+            
+            if value == B {
+                // Found the target
+                return 1
+            } else if value < B {
+                // Target is on the right side
+                left = mid + 1
+            } else {
+                // Target is on the left side
+                right = mid - 1
+            }
+        }
+        
+        // If we exit the loop, element not found
+        return 0
+    }
+}
 
