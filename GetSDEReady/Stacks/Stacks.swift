@@ -309,14 +309,14 @@ class Solution {
         return totalTrappedWater
     }
 }
-
+```markdown
 // https://getsdeready.com/courses/dsa/lesson/nearest-smaller-element/
 // https://www.interviewbit.com/problems/matrix-search/
 | Formula            | Meaning                                        |
 | ------------------ | ---------------------------------------------- |
 | `row = mid / cols` | Finds which row (floor) the element belongs to |
 | `col = mid % cols` | Finds which column (rack) inside that row      |
-
+```
 class Solution {
     func searchMatrix(_ A: inout [[Int]], _ B: inout Int) -> Int {
         // Total number of rows
